@@ -59,7 +59,7 @@ public class AssignmentOne {
 			
 				
 				JOptionPane.showMessageDialog(null,  "Dialog Boxes are really cool.");// I give up on the quotation
-				JOptionPane.showMessageDialog(null, "Hickory "+ "\n" + "Dickory "  +"\n"+ "Dock "); // I could not figure out how to do it 
+				JOptionPane.showMessageDialog(null, "Hickory "+ "\n" + "Dickory "  +"\n"+ "Dock ");  
 				JOptionPane.showMessageDialog(null, "Good bye from Ronald");
 	}//end of main 
 
