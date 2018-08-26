@@ -1,0 +1,104 @@
+public class practiceProgram130 {
+	public static void main(String []args) {
+		Scanner keyboard = new Scanner(System.in);
+		/*
+		 * 	1) Write a program that uses Scanner to read two strings from the keyboard. 
+	Display each string, along with its length, on two separate lines. 
+	Then create a new string by joining the two strings, separated by a blank.
+	 Display the new string and its length on a third line.
+--------------------------------------------------------------------------------------	
+		 */
+		
+	//Part One 
+		System.out.println("Enter A String");
+		String FIRST_STRING = keyboard.nextLine();
+		System.out.println("Enter another String");
+		String SECOND_STRING = keyboard.nextLine();
+		String FULL_STRING = FIRST_STRING + " "+ SECOND_STRING;
+		String COMBINE_STRING = FIRST_STRING + " " + FIRST_STRING.length() + "\n" +  SECOND_STRING + " " + SECOND_STRING.length();
+		System.out.println(COMBINE_STRING );
+		System.out.println(FULL_STRING + " " + FULL_STRING.length());
+		
+		
+//Second part		
+/*
+ *  2)  Write a program that reads a line of text and then displays the line, 
+  but with the first occurrence of hate changed to love.
+  For example, a possible sample dialogue might beEnter a line of text.
+  
+ 		*I hate you.
+ 		*I have rephrased that line to read:
+ 		*I love you.
+ 		*
+ 	You can assume that the word hate occurs in the input. 
+ 	If the word hate occurs more than once in the line, 
+ 	your program will replace only its first occurrence.
+
+---------------------------------------------------------------------------------------		
+ */ 
+ 
+		 
+		 String HATE = keyboard.nextLine();
+		
+		System.out.println("Used the word hate in any sentence.");
+		String LOVE = HATE.replaceFirst("(?i)"+ "hate", "Love");
+		System.out.print(LOVE);
+		
+	
+		//Third part 
+	/* 3) Write a program that asks the user to enter a favorite color, 
+		a favorite food, a favorite animal, and the first name of a friend or relative. 
+		The program should then print the following two lines, with the user’s input replacing the items in italics:
+		
+			*I had a dream that Name ate a Color Animal
+			*and said it tasted like Food!
+			
+		For example, if the user entered blue for the color,
+	 	hamburger for the food, dog for the animal, and Jake for the person’s name, 
+	 	the output would be
+	 	
+	 		*I had a dream that Jake ate a blue dog
+	 		*and said it tasted like hamburger!
+			*Don’t forget to put the exclamation mark at the end.
+
+	---------------------------------------------------------------------------------------
+*/
+		String DREAM = "I had a drean that Name ate a Color Animal \n and said it tasted like Food!";
+		System.out.println("Enter a Name ");
+		String NAME = keyboard.nextLine();
+		String FINAL_DREAM = DREAM.replaceAll("(?i)Name", NAME);
+		System.out.println("Enter your favorite Color ");
+		String COLOR = keyboard.nextLine();
+		FINAL_DREAM = DREAM.replaceAll("Color", COLOR);
+		System.out.println("Enter favorite Animal ");
+		String ANIMAL = keyboard.nextLine();
+		FINAL_DREAM = DREAM.replaceAll("Animal", ANIMAL);
+		System.out.println("Enter Favorite Food ");
+		String FOOD = keyboard.nextLine();
+		FINAL_DREAM = DREAM.replaceAll("Food", FOOD);
+		System.out.print(FINAL_DREAM);
+
+
+
+
+		Many private water wells produce only 1 or 2 gallons of water per minute. 
+One way to avoid running out of water with these low-yield wells is to use a holding tank.
+ A family of 4 will use about 250 gallons of water per day. However,
+  there is a “natural” water holding tank in the casing (i.e., the hole) of the well itself.
+   The deeper the well, the more water that will be stored that can be pumped out for household use.
+    But how much water will be available?
+Write a program that allows the user to input the radius of the well casing in inches 
+(a typical well will have a 3-inch radius) and the depth of the well in feet
+ (assume water will fill this entire depth, although in practice that will not be true 
+ since the static water level will generally be 50 feet or more below the ground surface).
+  The program should output the number of gallons stored in the well casing. For your reference:
+The volume of a cylinder is (the pie  was here, but the IDE cannot read it so use 3.14)
+pie r2h(pie time radius times 2 times height) , where r is the radius and h is the height. 1 cubic foot = 7.48 gallons 
+of water.
+For example, a 300-foot well full of water with a radius of 3 inches for the casing holds about 
+441 gallons of water—plenty for a family of 4 and no need to install a separate holding tank.
+
+		*/
+	}//End main
+
+}
