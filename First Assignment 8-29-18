@@ -99,6 +99,14 @@ For example, a 300-foot well full of water with a radius of 3 inches for the cas
 441 gallons of water—plenty for a family of 4 and no need to install a separate holding tank.
 
 		*/
+		System.out.println("Enter the radius of the well in inches");
+		double RADIUS = keyboard.nextDouble(); 
+		System.out.println("Enter the Height in feets");
+		double HEIGHT = keyboard.nextDouble();
+		double RADIUS_FEET = RADIUS/12;
+		double VOLUME = Math.PI * RADIUS_FEET * RADIUS_FEET * HEIGHT; 
+		double GALLONS = VOLUME * 7.48;
+		System.out.print("The well can hold up to " + GALLONS + " Gallons");
 	}//End main
 
 }
