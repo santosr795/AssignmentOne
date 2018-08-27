@@ -121,6 +121,7 @@ the user to input his or her weight in pounds, height in inches, and age in year
 The program should then output the number of chocolate bars that should be consumed
 to maintain one’s weight for both a woman and a man of the input weight, height, and age.
 		*/
+	
 	}//End main
 
 }
