@@ -1,0 +1,90 @@
+import java.util.Scanner;
+public class dateInput {
+
+	public static void main(String[] args) {
+		/*
+		 * 
+Write a program that reads a string from the keyboard and tests whether it contains a valid date.
+ Display the date and a message that indicates whether it is valid. If it is not valid,
+  also display a message explaining why it is not valid.
+The input date will have the format mm/dd/yyyy. 
+A valid month value mm must be from 1 to 12 (January is 1). 
+The day value dd must be from 1 to a value that is appropriate for the given month. 
+September, April, June, and November each have 30 days. February has 28 days except 
+for leap years when it has 29. The remaining months all have 31 days each.
+ A leap year is any year that is divisible by 4 but not divisible by 100 
+ unless it is also divisible by 400.
+
+		 */
+	Scanner keyboard = new Scanner(System.in);
+	//Date = mm/dd/yyyy
+	System.out.println("Enter a date in mm/dd/yyyy form");
+	String date = keyboard.nextLine();
+	String month = date.substring(0,2);
+	String days = date.substring(3,5);
+	String year = date.substring(6,10);
+	int int_Month = Integer.parseInt(month);
+	int int_Days = Integer.parseInt(days);
+	int int_Year = Integer.parseInt(year);
+	boolean leapYear = true;
+	String valid = " Is a valid date.";	
+	/* if  (leapYear = true && (int_Year % 4)==0) {
+		 if(leapYear = true && (int_Year %100)!=0) {
+			 if(leapYear = true && (int_Year % 400)==0) {
+				 System.out.println("It is a leap year");
+		 }
+	 }
+	}
+}*/	
+	if(int_Month == 01 && int_Days >= 1 && int_Days <= 30) {
+		System.out.println("January " + "/" + days + "/" + year);
+		
+	}
+	else if (int_Month == 02 && int_Days >= 1 && int_Days <= 29) {
+		
+		if (int_Days == 29) {
+
+	if(leapYear = true && (int_Year%400)==0 || (int_Year%100)!= 100 && (int_Year%4)==0) {
+System.out.println("February " + "/" + days + "/" + year);
+			}
+		}
+		else {
+			System.out.println("Not a valid date and Is not a leap year");
+		}
+	}
+	else if (int_Month == 03 && int_Days >= 1 && int_Days <= 31){
+		System.out.println("March " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 04 && int_Days >= 1 && int_Days <= 30) {
+		System.out.println("April " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 05 && int_Days >= 1 && int_Days <= 31) {
+		System.out.println("May " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 06 && int_Days >= 1 && int_Days <= 30) {
+		System.out.println("June " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 07 && int_Days >= 1 && int_Days <= 31) {
+		System.out.println("July " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 8 && int_Days >= 1 && int_Days <= 31) {
+		System.out.println("August " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 9 && int_Days >= 1 && int_Days <= 30) {
+		System.out.println("September " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 10 && int_Days >= 1 && int_Days <= 31) {
+		System.out.println("October " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 11 && int_Days >= 1 && int_Days <= 30) {
+		System.out.println("November " + "/" + days + "/" + year);
+	}
+	else if(int_Month == 12 && int_Days >= 1 && int_Days <= 31) {
+		System.out.println("December " + "/" + days + "/" + year);
+	}
+	else {
+		System.out.println("Thats not a valid date");
+	}
+}//end main 
+	
+}
