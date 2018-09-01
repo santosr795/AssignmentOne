@@ -159,17 +159,27 @@ public class backwordReading {
 					char secondChar = inPut.charAt(2);
 					String secondLast = inPut.substring(inPut.length()- i);
 					System.out.println(secondChar);
-					char secondLastChar = secondLast.charAt(0);
+					
+					//char secondLastChar = secondLast.charAt(0);
 					char secondLetter = inPut.charAt(1);
-					Systs
+					System.out.println(secondLetter ); 
+					String conSecChar = String.valueOf(secondLetter);
+					// conSecChar = conversionSecondChar
 					
-					if(length > i );{
+					if(conSecChar.equalsIgnoreCase(secondLast)){
+						char thirdChar = inPut.charAt(3);
 						i = i++;
+						String thirdLast = inPut.substring(inPut.length()-i);
 						True = false;
+						//System.out.println("YES U MADE IT");
+					}//End IF Two 
 					
-					}					
+					else {
+						True = true;
+					}
 				
-				}
+				}//end if One
+				
 				else {
 					System.out.println("Try another word.");
 					
