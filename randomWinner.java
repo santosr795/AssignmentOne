@@ -12,25 +12,45 @@ finalists 3, 6, 2 would be valid but picking 3, 3, 11 would be invalid because f
   to generate a random number between 1 and 10:int num = (int) (Math.random() * 10) +1;
 
  */
+
 public class randomWinner {
 public static void main(String []args) {
 	int i = 0;
-	int num = 0;
-	int numOne = 1;
-	int numTwo = 2;
-	while (i != 3 && num != numOne && numOne != numTwo){
-		
-		num = numTwo;
-			 numOne= (int)(Math.random() *10 ) + 1;
-			System.out.println("Number " + num + " is a Winner");
-			i = i + 1;
-		numTwo= numOne;
-		
-			
-		
-	}
-	
+	int num ;
+	int numOne;
+	int numTwo ;
+
+	num= (int)(Math.random() *10 ) + 1;
+	numOne= (int)(Math.random() *10 ) + 1;
+		if(num == numOne) {
+			num= (int)(Math.random() *10 ) + 1;
+			System.out.println(num);
+			System.out.println(numOne);
+			numTwo= (int)(Math.random() *10 ) + 1;
+			if(numTwo == num || numTwo == numOne) {
+				numTwo= (int)(Math.random() *10 ) + 1;
+				System.out.println(numTwo);
+			}
+			else {
+				System.out.println(numTwo);
+			}
+
+		}
+		else {
+			System.out.println(num);
+			System.out.println(numOne);
+			numTwo= (int)(Math.random() *10 ) + 1;
+				if(numTwo == num || numTwo == numOne)
+				{
+					numTwo= (int)(Math.random() *10 ) + 1;
+					System.out.println(numTwo);
+				}
+				else {
+					System.out.println(numTwo);
+				}
+		}
 	
 	
 }//end main
+
 }
