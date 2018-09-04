@@ -15,38 +15,41 @@ finalists 3, 6, 2 would be valid but picking 3, 3, 11 would be invalid because f
 
 public class randomWinner {
 public static void main(String []args) {
-	int i = 0;
-	int num ;
-	int numOne;
-	int numTwo ;
+	
+	int num, numOne, numTwo ;
 
 	num= (int)(Math.random() *10 ) + 1;
 	numOne= (int)(Math.random() *10 ) + 1;
+		/*
+		IF the code num and numOne are equally than they are to
+		similar numbers, so the program will take one of the 
+		numbers and randomize the num and compare it again.
+		*/
 		if(num == numOne) {
 			num= (int)(Math.random() *10 ) + 1;
-			System.out.println(num);
-			System.out.println(numOne);
+			System.out.println("Number " + num + " is a winner!");
+			System.out.println("Number " + numOne + " is a winner!");
 			numTwo= (int)(Math.random() *10 ) + 1;
 			if(numTwo == num || numTwo == numOne) {
 				numTwo= (int)(Math.random() *10 ) + 1;
-				System.out.println(numTwo);
+				System.out.println("Number " + numTwo + " is a winner!");
 			}
 			else {
-				System.out.println(numTwo);
+				System.out.println("Number " +numTwo + " is a winner!");
 			}
 
 		}
 		else {
-			System.out.println(num);
-			System.out.println(numOne);
+			System.out.println("Number " + num + " is a winner!");
+			System.out.println("Number " + numOne + " is a winner!");
 			numTwo= (int)(Math.random() *10 ) + 1;
 				if(numTwo == num || numTwo == numOne)
 				{
 					numTwo= (int)(Math.random() *10 ) + 1;
-					System.out.println(numTwo);
+					System.out.println("Number " + numTwo + " is a winner!");
 				}
 				else {
-					System.out.println(numTwo);
+					System.out.println("Number " + numTwo + " is a winner!");
 				}
 		}
 	
