@@ -28,6 +28,7 @@ public class vendingMachine {
 		int c = 1;
 		int i = 0;
 		double amountMoney  = 1;
+		System.out.println("Enter the money you have");
 		double money = keyboard.nextDouble();
 		while (True == true && amountMoney >= .8) {
 			i = i + 1;
@@ -35,23 +36,25 @@ public class vendingMachine {
 			final double  coupon = .2 ;
 			double costBar = 1;
 			double afterDiscount = costBar - coupon;
-			System.out.println("aftere discound " + afterDiscount);
+			//System.out.println("aftere discound " + afterDiscount);
 			amountMoney = money - afterDiscount;
-			System.out.printf("%.2f \n",amountMoney);
+			//System.out.printf("%.2f \n",amountMoney);
 			if (amountMoney <.8) {
 				True = false; 
-				if(amountMoney == .79){
+				if(amountMoney  > .79 && amountMoney  < .8){
 					c= c + 1;
 					int b = c - 2;
 					c = c -b;
-					System.out.println( "You can buy up to " + i + " chocolate bars."  + c);
+					System.out.println( "You can buy up to " + i + " chocolate bars.\n We have " + c + " coupon left.");
 					
 					
 					
 				}
+				else {
 				int b = c - 1;
 				c = c - b;
-				System.out.println( "You can buy up to " + i + " chocolate bars."  + c);
+				System.out.println( "You can buy up to " + i + " chocolate bars.\n  We have " + c + " coupon left.");
+				} 
 			}
 			
 			money = amountMoney;
