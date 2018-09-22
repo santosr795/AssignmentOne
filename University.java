@@ -9,18 +9,17 @@ public class University {
 	private String onCampusFood; 
 	private String healthCare; 
 	
-	public void readInput() {
-	
-	}
-	
+
 	private void Calculation() {
 		
 	}
-	public University calculateDate() {
-		University answer = new University();
-		return answer; 
+	
+	public void printDataForSchoolReport() {
+		
 	}
-	
-	
+	public void collectDataForReport(Student student) {
+		
+	}
+
 
 }
