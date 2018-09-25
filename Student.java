@@ -12,17 +12,14 @@ public class Student {
 	private int credit; 
 	private int planMealSelection;
 	private double lateFee;
-	private double onCampusFood; 
-	private double healthCareOption; 
-	private double tution = 0; 
+	private double healthCareOption;  
 	private double creditRate; 
-	
-	private double totalBill; 
-	
-	
-	
-	
+	private double mealPlan; 
+	private double totalBill;
+	private double tution = 0;
+	private double incidentalFee; 
 
+	
 	Scanner keyboard = new Scanner(System.in); 
 	public Student() {
 		firstName = "No name "; 
@@ -34,8 +31,8 @@ public class Student {
 		this.lastName = lastName; 
 		this.credit = credit; 
 	}
-	public student getTution() {
-		return this.tution; 
+	public double getTution() {
+		return tution;  
 		
 	}
 	public void readInput() {
@@ -73,28 +70,28 @@ public class Student {
 					System.out.println("That's not a food option.\nPlease enter a valid food plan");
 					planMealSelection = keyboard.nextInt(); 
 				}
-				if(planMealSelection ==1) {
-					onCampusFoodString = "Meal plan stuff-your-face"; 
-					
-				}
-				else if(planMealSelection == 2) {
-					onCampusFoodString = "Meal plan I-can't-stand-this-food";
-				}
-				else {
-					onCampusFoodString = "Meal plan I'm-on-a-diet";
-					
-				}
 			}
 		System.out.println("Enter Number of credit you want to enroll");
 		credit = keyboard.nextInt(); 
 		while(credit <= 0) {
 			System.out.println("Cannot put a negative number of credit or zero. Enter number credits. ");
 			credit = keyboard.nextInt(); 
-		}		
+		}
+		
 		
 			
 		}
-	private double calculateOnCampusFood(int foodCampusOption) {
+	private double calculateIncidentalFee(int credit) {
+		
+		credit = this.credit; 
+		int incidentalFee = 20 * credit; 
+		if(incidentalFee >250) {
+			incidentalFee = 250;
+		}
+		
+		return incidentalFee; 
+	}
+	private double calculateOnCampusFood(String foodInCampus,int foodSelection) {
 		/*
 		 * The program will check the what meal
 		 * plan the user has pick. If the user picks
@@ -105,12 +102,13 @@ public class Student {
 		 * meal plan 3 then (onCampusFood) will be 
 		 * assign to $2599.00.		 * 
 		 */
-		foodCampusOption = planMealSelection; 
-		if(foodCampusOption ==1) { 
+		double onCampusFood; 
+		foodSelection = planMealSelection; 
+		if(foodSelection ==1) { 
 			onCampusFood = 4999.00; 
 			
 		}
-		else if(foodCampusOption == 2) {
+		else if(foodSelection == 2) {
 
 			onCampusFood = 3499.00; 
 		}
@@ -136,13 +134,13 @@ public class Student {
 		numberCredit = this.credit;
 		if(healthCare.equalsIgnoreCase("Yes")) {
 			if(numberCredit < 10) {
-				healthCareOption = 25; 
+				healthCareOption =numberCredit* 25; 
 			}
 			else if(numberCredit < 15) {
-				healthCareOption = 20; 
+				healthCareOption = numberCredit * 20; 
 			}
 			else {
-				healthCareOption = 15; 
+				healthCareOption =numberCredit* 15; 
 			}
 		}
 		else {
@@ -153,7 +151,7 @@ public class Student {
 		
 	}
 
-	private double calculateCreditRate(String inState ,int numberCredits ) {
+	private double tutionRate(String inState ,int numberCredits ) {
 		/*
 		 * This will allow to find the creditRate 
 		 * by checking if the student the students lives
@@ -190,12 +188,18 @@ public class Student {
 		return this.creditRate; 
 		
 	}
-	private double calculateLateFee(String LateFeeString) {
+	private double calculateLateFee(String LateFeeString, double Tution) {
 		LateFeeString = this.lateFeeString; 
-		lateFee = 0; 
+		double LateFee;
+		Tution = tution;
+		
 		if(LateFeeString.equalsIgnoreCase("Yes")) {
-			lateFee = .1; 
+			LateFee = .1 * Tution; 
 		}
+		else {
+			LateFee = 0; 
+		}
+		
 		return lateFee; 
 		}
 	
@@ -209,13 +213,19 @@ public class Student {
 	System.out.println("Instate Tution: " + inStateString); 
 	System.out.println("Late Fees: " + lateFeeString);
 	System.out.println("Food Plan: " + onCampusFoodString);
-		
+	System.out.println("Tution is $"+tution );
+	System.out.println("lateFees are $"+ lateFee);
+	System.out.println("Incidental fees $" + incidentalFee);
+	System.out.println("Meal Plan Price $" + mealPlan);
+	System.out.println("Health Care $" + healthCareOption);
 	}
-	 public void calculationData() {
-		
-		
-		
-		
+	 public void calculateData() {
+		tution= tutionRate(inStateString , credit); 
+		mealPlan = calculateOnCampusFood(onCampusFoodString, credit);
+		lateFee = calculateLateFee(lateFeeString, tution); 
+		incidentalFee = calculateIncidentalFee(credit); 
+		healthCareOption = calculateHealthCare(healthCareString, healthCareOption); 		
+		totalBill = tution + mealPlan + lateFee; 
 	}//end calulateDAta 
 	public double getTution(Student Person) {
 		double answer = 0; 
