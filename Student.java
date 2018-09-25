@@ -14,8 +14,11 @@ public class Student {
 	private double lateFee;
 	private double onCampusFood; 
 	private double healthCareOption; 
-	private double tution; 
+	private double tution = 0; 
 	private double creditRate; 
+	
+	private double totalBill; 
+	
 	
 	
 	
@@ -31,7 +34,10 @@ public class Student {
 		this.lastName = lastName; 
 		this.credit = credit; 
 	}
-	
+	public student getTution() {
+		return this.tution; 
+		
+	}
 	public void readInput() {
 		System.out.println("Enter Name");
 		firstName = keyboard.nextLine(); 
@@ -88,7 +94,7 @@ public class Student {
 		
 			
 		}
-	private double calculateOnCampusFood() {
+	private double calculateOnCampusFood(int foodCampusOption) {
 		/*
 		 * The program will check the what meal
 		 * plan the user has pick. If the user picks
@@ -99,11 +105,12 @@ public class Student {
 		 * meal plan 3 then (onCampusFood) will be 
 		 * assign to $2599.00.		 * 
 		 */
-		if(planMealSelection ==1) { 
+		foodCampusOption = planMealSelection; 
+		if(foodCampusOption ==1) { 
 			onCampusFood = 4999.00; 
 			
 		}
-		else if(planMealSelection == 2) {
+		else if(foodCampusOption == 2) {
 
 			onCampusFood = 3499.00; 
 		}
@@ -114,7 +121,7 @@ public class Student {
 		return onCampusFood; 
 		
 	}
-	private double calculateHealthCare() {
+	private double calculateHealthCare(String healthCare,double numberCredit ) {
 		/* 
 		 * This will calculate healthCare 
 		 * by checking the numbers of credits 
@@ -125,19 +132,28 @@ public class Student {
 		 * then (healthCareOption will be assign to $20.
 		 * Anything over 15 will be assign to $15.
 		 */
-		if(credit < 10) {
-			healthCareOption = 25; 
-		}
-		else if(credit < 15) {
-			healthCareOption = 20; 
+		healthCare = this.healthCareString;
+		numberCredit = this.credit;
+		if(healthCare.equalsIgnoreCase("Yes")) {
+			if(numberCredit < 10) {
+				healthCareOption = 25; 
+			}
+			else if(numberCredit < 15) {
+				healthCareOption = 20; 
+			}
+			else {
+				healthCareOption = 15; 
+			}
 		}
 		else {
-			healthCareOption = 15; 
+			healthCareOption= 0; 
 		}
+		
 		return  healthCareOption; 
+		
 	}
 
-	private double calculateCreditRate() {
+	private double calculateCreditRate(String inState ,int numberCredits ) {
 		/*
 		 * This will allow to find the creditRate 
 		 * by checking if the student the students lives
@@ -145,36 +161,39 @@ public class Student {
 		 * check the amount of credits the student is taking 
 		 * and will assign the proper rate. 
 		 */
+		inState = this.inStateString; 
+		numberCredits= this.credit; 
 	
-		if(inStateString.equalsIgnoreCase("No")) {
-			if(credit < 12) {
-				creditRate = credit * 351; 
+		if(inState.equalsIgnoreCase("No")) {
+			if(numberCredits < 12) {
+				creditRate = numberCredits * 351; 
 			}
-			else if(credit < 18) {
-				creditRate = credit * 255; 
+			else if(numberCredits < 18) {
+				creditRate = numberCredits * 255; 
 			}
 			else {
-				creditRate = credit * 304; 
+				creditRate = numberCredits * 304; 
 			}
 		}
 		else {
 			
-				if(credit < 12) {
-					creditRate = credit * 105.50; 
+				if(numberCredits < 12) {
+					creditRate = numberCredits * 105.50; 
 				}
 				else if(credit < 18) {
-					creditRate = credit * 75.45; 
+					creditRate = numberCredits * 75.45; 
 				}
 				else {
-					creditRate = credit * 93; 
+					creditRate = numberCredits * 93; 
 				}
 			}
-		return creditRate; 
+		return this.creditRate; 
 		
 	}
-	private double calculateLateFee() {
+	private double calculateLateFee(String LateFeeString) {
+		LateFeeString = this.lateFeeString; 
 		lateFee = 0; 
-		if(lateFeeString.equalsIgnoreCase("Yes")) {
+		if(LateFeeString.equalsIgnoreCase("Yes")) {
 			lateFee = .1; 
 		}
 		return lateFee; 
