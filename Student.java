@@ -16,7 +16,7 @@ public class Student {
 	private double creditRate; 
 	private double mealPlan; 
 	private double totalBill;
-	private double tution = 0;
+	private double tution ;
 	private double incidentalFee; 
 
 	
@@ -31,10 +31,7 @@ public class Student {
 		this.lastName = lastName; 
 		this.credit = credit; 
 	}
-	public double getTution() {
-		return tution;  
-		
-	}
+	
 	public void readInput() {
 		System.out.println("Enter Name");
 		firstName = keyboard.nextLine(); 
@@ -198,11 +195,15 @@ public class Student {
 		}
 		else {
 			LateFee = 0; 
+			
 		}
 		
-		return lateFee; 
+		return LateFee; 
 		}
-	
+		public void set(double value) {
+			tution = value;
+			
+		}
 		
 	
 	public void  writeOutput() {
@@ -218,17 +219,37 @@ public class Student {
 	System.out.println("Incidental fees $" + incidentalFee);
 	System.out.println("Meal Plan Price $" + mealPlan);
 	System.out.println("Health Care $" + healthCareOption);
+	System.out.println("Total bii is " + totalBill);
+	
 	}
 	 public void calculateData() {
-		tution= tutionRate(inStateString , credit); 
+		tution = tutionRate(inStateString , credit); 
 		mealPlan = calculateOnCampusFood(onCampusFoodString, credit);
 		lateFee = calculateLateFee(lateFeeString, tution); 
 		incidentalFee = calculateIncidentalFee(credit); 
 		healthCareOption = calculateHealthCare(healthCareString, healthCareOption); 		
-		totalBill = tution + mealPlan + lateFee; 
-	}//end calulateDAta 
-	public double getTution(Student Person) {
-		double answer = 0; 
-		return answer; 
-	}
+		totalBill = tution + mealPlan + lateFee + incidentalFee + healthCareOption; 
+	System.out.println("Tuion" + tution);
+	 }//end calulateDAta 
+	 
+	 public double getTution() {
+		 return this.tution; 
+	 }
+	 public double getLateFee() {
+		 return this.lateFee; 
+	 }
+	 public double getMealPlan() {
+		 return this.mealPlan; 
+	 }
+	 public double getIncidentalFee() {
+		 return this.incidentalFee;
+	 }
+	 public double getHealthCare() {
+		 return this.healthCareOption; 
+	 }
+	 public String getInOutState() {
+		 return this.inStateString; 
+	 }
+	 
+	
 }
