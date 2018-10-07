@@ -10,7 +10,9 @@ public class findingRoots {
 	private static double lowerXScale = -10;
 	private static final double upperXScale = 10; 
 	private double upperBound = 0 ;
-	private double lowerBound = 0;
+	private double lowerBound = 0;	
+	private double guessX; 
+	
 	
 	findingRoots(){
 		this.leadingCoefficient = 0;
@@ -29,24 +31,32 @@ public class findingRoots {
 		this.constant = Constant;
 		//double coeff4, double coeff3, double coeff2, double coeff1, double Constant)
 	}
-	private double scaleCalculation(double upper_Bound, double lower_Bound) {
-		upper_Bound = this.upperBound;
-		lower_Bound = this.lowerBound;
-		double root = 0; 
-		findingRoots tester = new findingRoots();  
-		for(int i = 1; i >= upperXScale; i++ ) {
+
+	private double OriginalFormula() {
+		double answer_Y = 0; 
+		//Come back and check this out; 
+		answer_Y = this.leadingCoefficient; 
+		return answer_Y; 
+	}
+	public double scaleCalculation() {
+		for(int j = 0; j  < upperXScale; j++) {
 			
-			lowerXScale = lowerXScale + i;
-			root = ( this.leadingCoefficient*(lowerXScale)+ this.coefficient4 *(lowerXScale) + this.constant);
-			if(root == 0) {
-				
-			}
+			upperBound = lowerXScale; //Previews X Value 
 			
+				lowerXScale = lowerXScale + 1; 
+			lowerBound = lowerXScale; // New X value
+			/*
+			 * Getting the average of the two 
+			 * to get a new X value. 
+			 */
+			
+			/*
+			 * With the new X Value(guessX) we will take 
+			 * it and put it to the Original Polynomial; 
+			 */
+			guessX = (lowerBound + upperBound)/2;
 		}
-		
-		
-		
-		return root; 
+		return guessX; 
 
 	}
 }
