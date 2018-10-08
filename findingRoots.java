@@ -8,7 +8,7 @@ public class findingRoots {
 	private double coefficient1; 
 	private double constant;
 	private static double lowerXScale = -10;
-	private static final double upperXScale = 10; 
+	private static double upperXScale = 10; 
 	private double upperBound = 0 ;
 	private double lowerBound = 0;	
 	private double guessX = 0; 
@@ -31,9 +31,40 @@ public class findingRoots {
 		this.constant = Constant;
 		//double coeff4, double coeff3, double coeff2, double coeff1, double Constant)
 	}
-	private double walkingTheXScale() {
-		
-		return lowerXScale; 
+	 	/*
+	 	 * This program will allow us to test the X Scale 
+	 	 * from - 10(lowerXScale) to 10(upperXScale). First
+	 	 * the program will set upperXScale to !0.
+	 	 * Second, the program will put the lowerXScale in the 
+	 	 * polynomial formula in which will result for why. Third,
+	 	 * the program will Set upperBound equals to lowerXScale.
+	 	 * Fourthly, the program will increase the lowerXScale with 1 and 
+	 	 * set the lowerBound the new LowerXScale. 
+	 	 * Then the program will put the new lowerXScale in the polynomial formula,
+	 	 * which will result in two y2. Finally the program will check y and y2 if one
+	 	 * is negative and positive at the same time, if they are they will set upperXScale
+	 	 * equals to lowerXScale. Ending the program, if they y1 and y2 are not one 
+	 	 * negative and one positive the program will repeat again.
+	 	 */
+	private void walkingTheXScale() {
+		upperXScale = 10; 
+		while(lowerXScale < upperXScale) {
+			double y =  lowerXScale*((double) Math.pow(leadingCoefficient, 2)) + lowerXScale*(this.coefficient4) + this.constant;
+			upperBound = lowerXScale; 
+			lowerXScale = lowerXScale + 1;
+			lowerBound = lowerXScale; 
+			double y2 =  lowerXScale*((double) Math.pow(leadingCoefficient, 2)) + lowerXScale*(this.coefficient4) + this.constant;
+			
+			if ( y > 0 && y2 <0 ) {
+				upperXScale = lowerXScale;
+				
+			}
+			else if(y2 > 0 && y < 0) {
+				upperXScale = lowerXScale;
+			}
+			
+		}
+		 
 	}
 	private double average (double lower_Bound, double upper_Bound) {
 		 guessX = 0; 
@@ -51,13 +82,16 @@ public class findingRoots {
 	 */
 	private double findingY(double guess_X) {
 		this.guessX = guess_X; 
-		double Y = 0 ;
+		double Y = 1 ;
+		for(int i = 1; i == 5; i++) {
 		Y = this.guessX*((double) Math.pow(leadingCoefficient, 2)) + guessX*(this.coefficient4) + this.constant;
 		if(Y< 0 ) {
 			lowerBound = Y; 
 		}
 		else {
 			upperBound = Y; 
+			i = i -1;
+		}
 		}
 		return Y; 
 	}
