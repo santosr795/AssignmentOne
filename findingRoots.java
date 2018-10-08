@@ -11,7 +11,7 @@ public class findingRoots {
 	private static final double upperXScale = 10; 
 	private double upperBound = 0 ;
 	private double lowerBound = 0;	
-	private double guessX; 
+	private double guessX = 0; 
 	
 	
 	findingRoots(){
@@ -31,20 +31,53 @@ public class findingRoots {
 		this.constant = Constant;
 		//double coeff4, double coeff3, double coeff2, double coeff1, double Constant)
 	}
-
-	private double OriginalFormula() {
+	private double walkingTheXScale() {
+		
+		return lowerXScale; 
+	}
+	private double average (double lower_Bound, double upper_Bound) {
+		 guessX = 0; 
+		this.lowerBound = lower_Bound; 
+		this.upperBound = upper_Bound; 
+		guessX = this.lowerBound + this.upperBound/2; 
+		return guessX; 
+	}
+	/*
+	 * This will allow us find The Y value. IF the Y value 
+	 * is equals to Zero it will print it out. If The Y is 
+	 * less than zero the program will assign that lower bound. 
+	 * if Y is greater than Zero that will be assign to the Upper
+	 * bound.
+	 */
+	private double findingY(double guess_X) {
+		this.guessX = guess_X; 
+		double Y = 0 ;
+		Y = this.guessX*((double) Math.pow(leadingCoefficient, 2)) + guessX*(this.coefficient4) + this.constant;
+		if(Y< 0 ) {
+			lowerBound = Y; 
+		}
+		else {
+			upperBound = Y; 
+		}
+		return Y; 
+	}
+	/*public double OriginalFormula() {
 		double answer_Y = 0; 
+		double xValue = scaleCalculation() ;
+		
 		//Come back and check this out; 
-		answer_Y = this.leadingCoefficient; 
+		
+		answer_Y =  xValue * ((double) Math.pow(leadingCoefficient, 2)) + xValue *(this.coefficient4) + this.constant; 
+		System.out.println("The answer Y is equals too" + answer_Y);
 		return answer_Y; 
 	}
 	public double scaleCalculation() {
-		for(int j = 0; j  < upperXScale; j++) {
 			
 			upperBound = lowerXScale; //Previews X Value 
-			
+			System.out.println("upperBound is equals to " + upperBound);
 				lowerXScale = lowerXScale + 1; 
 			lowerBound = lowerXScale; // New X value
+			System.out.println("Lower bound is equals to " + lowerBound);
 			/*
 			 * Getting the average of the two 
 			 * to get a new X value. 
@@ -53,10 +86,12 @@ public class findingRoots {
 			/*
 			 * With the new X Value(guessX) we will take 
 			 * it and put it to the Original Polynomial; 
-			 */
-			guessX = (lowerBound + upperBound)/2;
-		}
+			 			guessX = (lowerBound + upperBound)/2;
+		
+		System.out.println("Guess X is Equals to " + guessX);
 		return guessX; 
+		}
+		*/ 
 
-	}
+	
 }
