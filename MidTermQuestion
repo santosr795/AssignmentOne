@@ -1,0 +1,21 @@
+Question Number 8)
+import java.util.*;
+public class PurchaseDemoMidTerm {
+	public static void main(String[] args) {
+	Scanner keyboard = new Scanner(System.in); 
+	Purchase oneSale = new Purchase();
+	double totalPrice = 0;
+	System.out.println("Enter number of item you are buying ");
+	int numberItem = keyboard.nextInt();
+	for(int i =1; i <= numberItem; i++) {
+	oneSale.readInput();
+	oneSale.writeOutput();
+	totalPrice = totalPrice + oneSale.getTotalCost(); 
+	System.out.println("Cost each $" + oneSale.getUnitCost());
+	System.out.println("SubTotal $" + oneSale.getTotalCost());
+	System.out.println("Total cost $" + totalPrice);
+	}
+	
+
+	}
+}
