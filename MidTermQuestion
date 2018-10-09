@@ -5,6 +5,30 @@ count = Count;
 count = count + 1;
 return count;
 }
+Question 5) 
+System.out.println("Enter numbre to add. ");
+		double numberOne = keyboard.nextDouble(); 
+		System.out.println("Enter another number to add.");
+		double numberTwo = keyboard.nextDouble();
+		double AverNum = 2; 
+		String sentinel = ""; 
+		double Sum = numberOne + numberTwo; 
+		double Average = Sum/AverNum; 
+		System.out.println("The Average of " + numberOne +" and " + "is equals to " + Average);
+		System.out.println("Do you want to find add other number for \n find the Average. Enter Yes or No. ");
+			sentinel = keyboard.nextLine();	
+		while(sentinel.equalsIgnoreCase("Yes")) {
+			
+			AverNum= AverNum++; 
+			System.out.println("Enter another number to add");
+			numberTwo = keyboard.nextDouble(); 
+			Sum = Sum + numberTwo; 
+			Average = Sum / AverNum;
+			System.out.println("The average is " + Average);
+	
+			System.out.println("Do you want to find add other number for find the Average. Enter Yes or No. ");
+			sentinel = keyboard.nextLine();
+		}
 
 Question Number 8)
 import java.util.*;
