@@ -53,13 +53,12 @@ public class PurchaseDemoMidTerm {
 }
 Question number 9 
 public boolean equals(Purchase purchaseOne , Purchase purchaseTwo) {
-			if(purchaseOne.getTotalCost() < purchaseTwo.getTotalCost()) {
+			if(purchaseOne.getTotalCost() == purchaseTwo.getTotalCost()) {
 				return true;						
 			}
-			else if(purchaseTwo.getTotalCost() < purchaseOne.getTotalCost()) {
-				return true;
-			}
+			else {
 			return false;
+			}
 		}
 Second part 
 
@@ -74,20 +73,70 @@ else {
 	System.exit(0);
 }
 Question Number 11
-	public boolean largerTotalCostThan(Purchase p1, Purchase p2) {
-			if(p1.getTotalCost() < p2.getTotalCost()) {
+	public boolean largerTotalCostThan(Purchase firstPurchase, Purchase secondPurchase) {
+			if(firstPurchase.getTotalCost() < secondPurchase.getTotalCost()) {
 				return true ;
 			}
-			else if (p2.getTotalCost() < p1.getTotalCost()) {
-				return true; 
-			}
+			else {
 			return false; 
+			}
 		}
 Second part 
-	threeSale.largerTotalCostThan(oneSale, twoSale);
+	f( threeSale.largerTotalCostThan(oneSale, twoSale)) {
+		System.out.println(oneSale.getName() + " cost More than" + twoSale.getName());
+	}
+	else {
+		System.out.println(oneSale.getName() + " Might equals or cost less then " + twoSale.getName());
+		
+	}
 Question Number 12
    Species(){
     	this.name = "Tiger";
     	this.population = 1000;
     	this.growthRate = .25225; 
     }
+Question Number 15) 
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+
+Question Number 16) 
+5
+6
+8
+
+6
+8
+11
+
+7
+10
+14
+
+8
+12
+17
+
+9
+14
+20
+
+Question Number 17 
+
+apptle
+grape
+pears
+kiwi
+Orange
+Pears
+Pears
+Grapes
+Orange
+20
