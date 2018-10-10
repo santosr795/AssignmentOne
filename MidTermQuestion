@@ -51,17 +51,40 @@ public class PurchaseDemoMidTerm {
 
 	}
 }
+Question number 9 
+public boolean equals(Purchase purchaseOne , Purchase purchaseTwo) {
+			if(purchaseOne.getTotalCost() < purchaseTwo.getTotalCost()) {
+				return true;						
+			}
+			else if(purchaseTwo.getTotalCost() < purchaseOne.getTotalCost()) {
+				return true;
+			}
+			return false;
+		}
+Second part 
+
 Question Number 10 
-					public void changeGroupPrice( double salePercent ) {
-					salePercent = groupPrice; 
-					if(salePercent > 0 && salePercent < .5) {
-						groupPrice = salePercent; 
-					}
-					else {
-						System.out.println("That's out of the sale percentage is out of range.");
-						System.exit(0);
-					}
-		
+public void changeGroupPrice( double salePercent ) {
+	salePercent = groupPrice; 
+	if(salePercent > 0 && salePercent < .5) {
+	groupPrice = salePercent; 
+}
+else {
+	System.out.println("That's out of the sale percentage is out of range.");
+	System.exit(0);
+}
+Question Number 11
+	public boolean largerTotalCostThan(Purchase p1, Purchase p2) {
+			if(p1.getTotalCost() < p2.getTotalCost()) {
+				return true ;
+			}
+			else if (p2.getTotalCost() < p1.getTotalCost()) {
+				return true; 
+			}
+			return false; 
+		}
+Second part 
+	threeSale.largerTotalCostThan(oneSale, twoSale);
 Question Number 12
    Species(){
     	this.name = "Tiger";
