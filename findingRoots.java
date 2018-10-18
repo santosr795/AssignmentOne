@@ -12,6 +12,7 @@ public class findingRoots {
 	private double upperBound = 0 ;
 	private double lowerBound = 0;	
 	private double guessX = 0; 
+	private double Yanswer; 
 	
 	
 	findingRoots(){
@@ -46,33 +47,37 @@ public class findingRoots {
 	 	 * equals to lowerXScale. Ending the program, if they y1 and y2 are not one 
 	 	 * negative and one positive the program will repeat again.
 	 	 */
-	private void walkingTheXScale() {
+	private double walkingTheXScale(double lower_Scale) {
 		upperXScale = 10; 
+		lowerXScale = lower_Scale;
 		while(lowerXScale < upperXScale) {
 			double y =  lowerXScale*((double) Math.pow(leadingCoefficient, 2)) + lowerXScale*(this.coefficient4) + this.constant;
 			upperBound = lowerXScale; 
-			lowerXScale = lowerXScale + 1;
+			System.out.println("Waliking theScale upperBound is eqauls to " + upperBound);
+			lowerXScale = lowerXScale + .5;
 			lowerBound = lowerXScale; 
 			double y2 =  lowerXScale*((double) Math.pow(leadingCoefficient, 2)) + lowerXScale*(this.coefficient4) + this.constant;
+			System.out.println("Y2 is equals to " + y2);
+			//right here you need  bring (average) and put lower and upper X scale
+			//After using  the (average) use the findingY in here too.
+			//you might not even need calculate. this can 
+			//be your calculate method. 	
 			
-			if ( y > 0 && y2 <0 ) {
-				upperXScale = lowerXScale;
+			if(y > 0 && 0 <y2 || y2 > 0 && y <0) { 
+				guessX = this.lowerBound + this.upperBound/2; 
+			
+				if ( y > 0 && y2 <0 ) {
+					upperXScale = lowerXScale;
 				
-			}
-			else if(y2 > 0 && y < 0) {
-				upperXScale = lowerXScale;
-			}
-			
+				}
+				else if(y2 > 0 && y < 0) {
+					upperXScale = lowerXScale;
+				}
+			}//for	
 		}
-		 
+		 return guessX; 
 	}
-	private double average (double lower_Bound, double upper_Bound) {
-		 guessX = 0; 
-		this.lowerBound = lower_Bound; 
-		this.upperBound = upper_Bound; 
-		guessX = this.lowerBound + this.upperBound/2; 
-		return guessX; 
-	}
+
 	/*
 	 * This will allow us find The Y value. IF the Y value 
 	 * is equals to Zero it will print it out. If The Y is 
@@ -83,16 +88,17 @@ public class findingRoots {
 	private double findingY(double guess_X) {
 		this.guessX = guess_X; 
 		double Y = 1 ;
-		for(int i = 1; i == 5; i++) {
 		Y = this.guessX*((double) Math.pow(leadingCoefficient, 2)) + guessX*(this.coefficient4) + this.constant;
+		System.out.println("Y is equals to " + Y); 
 		if(Y< 0 ) {
-			lowerBound = Y; 
+			lowerBound = guessX; 
 		}
 		else {
-			upperBound = Y; 
-			i = i -1;
+			upperBound =guessX; 
+			
+		
 		}
-		}
+
 		return Y; 
 	}
 	/*public double OriginalFormula() {
@@ -125,7 +131,27 @@ public class findingRoots {
 		System.out.println("Guess X is Equals to " + guessX);
 		return guessX; 
 		}
-		*/ 
+		*/
+	public void calculation() {
+		
+		for(int i = 0; i <= 5; i++) {
+			guessX = walkingTheXScale(lowerXScale); 
+			System.out.println("LowerXScale in calculation " + lowerXScale);
+			//guessX = average(lowerBound, upperBound);
+			//System.out.println("GuessX is " + guessX);
+			
+			Yanswer = findingY(guessX); 
+			if(Yanswer == 0) {
+				System.out.println("Root " + Yanswer);
+			}
+			else {
+				
+			}
+			
+		}
+		
+	}
+	
 
 	
 }
