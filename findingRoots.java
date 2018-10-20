@@ -1,338 +1,157 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author santo
- */
-
-/**
- * demonstrating a GUI program
- */
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class ExampleGUI extends JPanel
-{
-	// ***Variables are created ***
-	//*** GUIs are made up of JPanels.  Panels are created
-	//*** here and named appropriately to describe what will
-	//*** be placed in each of them.
-	JPanel titlePanel = new JPanel();
-	JPanel questionPanel = new JPanel();
-	JPanel inputNumberPanel = new JPanel();
-	JPanel addAndSubtractButtonPanel = new JPanel();
-	JPanel answerPanel = new JPanel();
-	JPanel nextNumberPanel = new JPanel();
-        
-    JPanel inputNumberPanel1 = new JPanel();
-	JPanel inputNumberPanel2 = new JPanel(); 
-	JPanel inputNumberPanel3 = new JPanel(); 
-	JPanel inputNumberPanel4 = new JPanel(); 
-	JPanel inputNumberPanel5 = new JPanel(); 
-	JPanel inputNumberPanel6 = new JPanel(); 
-    JPanel resetPanel = new JPanel(); 
-    JPanel calculatePanel = new JPanel(); 
+import java.util.*;
+public class findingRoots {
+	Scanner keyboard = new Scanner(System.in); 
+	private double leadingCoefficient; 
+	private double coefficient4;
+	private double coefficient3; 
+	private double coefficient2; 
+	private double coefficient1; 
+	private double constant;
+	private static double lowerXScale = -10;
+	private static double upperXScale = 10; 
+	private double upperBound = 0 ;
+	private double lowerBound = 0;	
+	private double guessX = 0; 
+	private double Yanswer; 
 	
-	//*** a JLabel is a text string that is given a String value
-	//*** and is placed in its corresponding JPanel or JButton
-	JLabel titleLabel = new JLabel();
-	JLabel questionLabel = new JLabel();
-	JLabel inputNumberLabel = new JLabel();
-	JLabel add5Label = new JLabel();
-	JLabel subtract5Label = new JLabel();
-	JLabel answerLabel = new JLabel();
-	//JLabel nextNumberLabel = new JLabel();
-        
-	JLabel inputNumberLabel1 = new JLabel(); 
-	JLabel inputNumberLabel2 = new JLabel(); 
-	JLabel inputNumberLabel3 = new JLabel();
-	JLabel inputNumberLabel4 = new JLabel(); 
-	JLabel inputNumberLabel5 = new JLabel(); 
-	JLabel inputNumberLabel6 = new JLabel();
-    JLabel resetLabel = new JLabel();
-	JLabel calculateLabel = new JLabel();
-        
-	JTextField inputTextField1 = new JTextField(10);
-	JTextField inputTextField2 = new JTextField(10); 
-	JTextField inputTextField3 = new JTextField(10); 
-	JTextField inputTextField4 = new JTextField(10);
-	JTextField inputTextField5 = new JTextField(10);
-	JTextField inputTextField6 = new JTextField(10);
-	//*** three JButtons are created.  When pushed, each button calls
-	//*** its corresponding actionPerformed() method from the class created
-	//*** for each button. This method executes the method code, performing
-	//*** what the button is to do.
-    JButton calculateButton = new JButton(); 
-	JButton ResetButton = new JButton(); 
-        
-	JButton add5Button = new JButton();
-	JButton subtract5Button = new JButton();
-	JButton nextNumberButton = new JButton();
-	//*** a JTextField creates a location where the client can place
-	//*** text
-	JTextField inputTextField = new JTextField(15);
-
 	
-	 //*** constructor
-	 //*** Variables are given initial values
-	
-	public ExampleGUI()
-	{
-		//*** set panel layouts
-		//*** panels could be LEFT, or RIGHT justified.
-		titlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		questionPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		inputNumberPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		addAndSubtractButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		answerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		nextNumberPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-                
-                
-        inputNumberPanel1.setLayout(new FlowLayout(FlowLayout.CENTER)); 
-		inputNumberPanel2.setLayout(new FlowLayout(FlowLayout.CENTER)); 
-		inputNumberPanel3.setLayout(new FlowLayout(FlowLayout.CENTER));
-		inputNumberPanel4.setLayout(new FlowLayout(FlowLayout.CENTER)); 
-		inputNumberPanel5.setLayout(new FlowLayout(FlowLayout.CENTER)); 
-		inputNumberPanel6.setLayout(new FlowLayout(FlowLayout.CENTER));
-		
-                
-		//*** set Label fonts.  You can use other numbers besides 30,20
-		//*** or 15 for the font size.  There are other fonts.
-		Font quizBigFont = new Font("Helvetica Bold", Font.BOLD, 30);
-		Font quizMidFont = new Font("Helvetica Bold", Font.BOLD, 20);
-		Font quizSmallFont = new Font("Helvetica Bold", Font.BOLD, 15);
-		titleLabel.setFont(quizBigFont);
-		questionLabel.setFont(quizMidFont);
-		inputNumberLabel.setFont(quizMidFont);
-		add5Label.setFont(quizSmallFont);
-		subtract5Label.setFont(quizSmallFont);
-		answerLabel.setFont(quizBigFont);
-		inputNumberLabel.setFont(quizSmallFont);
-		inputTextField.setFont(quizMidFont);
-                
-                
-        inputNumberLabel1.setFont(quizMidFont);
-		inputNumberLabel2.setFont(quizMidFont);
-		inputNumberLabel3.setFont(quizMidFont);
-		inputNumberLabel4.setFont(quizMidFont);
-		inputNumberLabel5.setFont(quizMidFont);
-		inputNumberLabel6.setFont(quizMidFont);
-		calculateLabel.setFont(quizMidFont);
-		answerLabel.setFont(quizSmallFont);
-		resetLabel.setFont(quizSmallFont);
-		inputTextField1.setFont(quizMidFont); 
-		inputTextField2.setFont(quizMidFont);
-		inputTextField3.setFont(quizMidFont);
-		inputTextField4.setFont(quizMidFont);
-        inputTextField5.setFont(quizMidFont);
-        inputTextField6.setFont(quizMidFont);
-        
-        
-		//*** labels are given string values
-		titleLabel.setText("Add or Subtract Five");
-		questionLabel.setText("Please enter an integer number.");
-		inputNumberLabel.setText("Number:");
-		add5Button.setText("   Add 5   ");
-		subtract5Button.setText("Subtract 5");
-		answerLabel.setText("");
-		nextNumberButton.setText("   Reset   ");               
-                
-                
-        titleLabel.setText("Finding the Roots of a Polynomial");
-		questionLabel.setText("Enter a five degree polynomial");
-		inputNumberLabel1.setText("     x^5    ");
-		inputNumberLabel2.setText("     x^4    ");
-		inputNumberLabel3.setText("     x^3    ");
-		inputNumberLabel4.setText("     x^2    ");
-		inputNumberLabel5.setText("     x^1    ");
-		inputNumberLabel6.setText("Number  "    );
-		calculateButton.setText("Calculate");
-		ResetButton.setText("Reset");                           
-                              
-        // titlePanel.add(titleLabel);
-		//questionPanel.add(questionLabel);				 
-		//*** the 3 buttons are connected to their classes
-		add5Button.addActionListener(new add5Button());
-		subtract5Button.addActionListener(new subtract5Button());
-		nextNumberButton.addActionListener(new nextNumberButton());
-		//*** Labels, buttons and textFields are added to their
-		//*** panels
-		titlePanel.add(titleLabel);
-		questionPanel.add(questionLabel);
-		//*** inputNumberPanel has 2 items added
-		inputNumberPanel.add(inputNumberLabel);
-		inputNumberPanel.add(inputTextField);
-		
-		inputNumberPanel1.add(inputNumberLabel1); 
-		inputNumberPanel1.add(inputTextField1); 
-		
-		inputNumberPanel2.add(inputNumberLabel2);
-		inputNumberPanel2.add(inputTextField2);
-		
-		inputNumberPanel3.add(inputNumberLabel3);
-		inputNumberPanel3.add(inputTextField3);
-		
-		inputNumberPanel4.add(inputNumberLabel4);
-		inputNumberPanel4.add(inputTextField4);
-		
-		inputNumberPanel5.add(inputNumberLabel5); 
-        inputNumberPanel5.add(inputTextField5); 
-        
-        inputNumberPanel6.add(inputNumberLabel6);
-        inputNumberPanel6.add(inputTextField6);
-        
-                
-		//*** submitPanel has two items added
-		addAndSubtractButtonPanel.add(add5Button);
-		addAndSubtractButtonPanel.add(subtract5Button);
-		answerPanel.add(answerLabel);
-		nextNumberPanel.add(nextNumberButton);
-		//*** The panels are added in the order that they should appear.
-		//*** Throughout the declarations and initializations variables were
-		//*** kept in this order to aid in keeping them straight
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-         add(titlePanel);
-         add(questionPanel);
-         add(inputNumberPanel1);
-         add(inputNumberPanel2);
-         add(inputNumberPanel3); 
-         add(inputNumberPanel4);
-         add(inputNumberPanel5);
-         add(inputNumberPanel6);
-                 
-		 add(inputNumberPanel);
-		 add(addAndSubtractButtonPanel);
-		 add(answerPanel);
-		 add(nextNumberPanel);
-                  ;
-		 //*** The method writeToFile() is called from the constructor.
-		 //*** One could call a read method from the constructor.
-		
-	//	writeToFile();
-	}// constructor
-	
-	 //*** This method writes 4 lines to a file.  Eclipse puts the file in
-	 //*** the folder of the project but not in the src folder.  Put any
-	 //*** file that you want read in the same place so that Eclipse can
-	 //*** find it.
-	/* 
-	private void writeToFile()
-	{
-		String fileName = "textFile.txt";
-		String line = null;
-		int count;
-		Scanner scan = new  Scanner(System.in);
-		PrintWriter textStream = TextFileIO.createTextWrite(fileName);
-		System.out.println("Enter 4 lines of text:");
-		for (count = 1; count <= 4; count++)
-		{
-			line = scan.nextLine();
-			textStream.println(count + " " + line);
+	findingRoots(){
+		this.leadingCoefficient = 0;
+		this.coefficient4 = 0;
+		this.coefficient3 = 0; 
+		this.coefficient2 = 0; 
+		this.coefficient1 = 0; 
+		this.constant = 0; 
+	}
+	findingRoots(double coeff5, double coeff4, double Constant){
+		this.leadingCoefficient = coeff5; 
+		this.coefficient4 = coeff4; 
+		//this.coefficient3 = coeff3; 
+		//this.coefficient2 = coeff2; 
+		//this.coefficient1 = coeff1; 
+		this.constant = Constant;
+		//double coeff4, double coeff3, double coeff2, double coeff1, double Constant)
+	}
+	 	/*
+	 	 * This program will allow us to test the X Scale 
+	 	 * from - 10(lowerXScale) to 10(upperXScale). First
+	 	 * the program will set upperXScale to !0.
+	 	 * Second, the program will put the lowerXScale in the 
+	 	 * polynomial formula in which will result for why. Third,
+	 	 * the program will Set upperBound equals to lowerXScale.
+	 	 * Fourthly, the program will increase the lowerXScale with 1 and 
+	 	 * set the lowerBound the new LowerXScale. 
+	 	 * Then the program will put the new lowerXScale in the polynomial formula,
+	 	 * which will result in two y2. Finally the program will check y and y2 if one
+	 	 * is negative and positive at the same time, if they are they will set upperXScale
+	 	 * equals to lowerXScale. Ending the program, if they y1 and y2 are not one 
+	 	 * negative and one positive the program will repeat again.
+	 	 */
+	private double walkingTheXScale(double lower_Scale) {
+		upperXScale = 10; 
+		lowerXScale = lower_Scale;
+		while(lowerXScale < upperXScale) {
+			double y =  this.leadingCoefficient*((double) Math.pow(lowerXScale, 2)) + this.coefficient4*(lowerXScale) + this.constant;
+			upperBound = lowerXScale; 
+			System.out.println("Waliking theScale upperBound is eqauls to " + upperBound);
+			lowerXScale = lowerXScale + .1;
+			lowerBound = lowerXScale; 
+			double y2 =  lowerXScale*((double) Math.pow(leadingCoefficient, 2)) + lowerXScale*(this.coefficient4) + this.constant;
+			System.out.println("Y2 is equals to " + y2);
+			//right here you need  bring (average) and put lower and upper X scale
+			//After using  the (average) use the findingY in here too.
+			//you might not even need calculate. this can 
+			//be your calculate method. 	
+			
+			//if(y > 0 && 0 <y2 || y2 > 0 && y <0) { 
+				guessX =( this.lowerBound + this.upperBound)/2; 
+			
+				if ( y > 0 && 0 <y2 || y2 > 0 && y <0 ) {
+					upperXScale = lowerXScale;
+				
+				}
+				else if(y2 > 0 && y < 0) {
+					upperXScale = lowerXScale;
+				}
+			//}//for	
 		}
-		textStream.close( ); //*** did not require error handling
-		System.out.println("Four lines were written to " + fileName);
-	}
-	*/
-	 //*** display() is called from main to get things going
-	 
-	public void display()
-	{	//*** A JFrame is where the components of the screen
-		//*** will be put.
-		JFrame theFrame = new JFrame("GUI Example");
-		//*** When the frame is closed it will exit to the
-		//*** previous window that called it.
-		theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//*** puts the panels in the JFrame
-		theFrame.setContentPane(this);
-		//*** sets the dimensions in pixels
-		theFrame.setPreferredSize(new Dimension(600, 600));
-		theFrame.pack();
-		//*** make the window visible
-		theFrame.setVisible(true);
-	}
-	
-	 //*** method doSomething is called from an actionPerformend method
-	 //*** demonstrating calling methods that can do work for you.
-	 
-	private void doSomething()
-	{
-		for(int x = 1; x <= 10; x++)
-			System.out.println(" in doSomething method x is " + x);
+		 return guessX; 
 	}
 
-	
-	//*** This class has one method that is called when the add5Button
-	//*** is pushed.  It retrieves the string from the JTextField
-	//*** inputTextField, converts it to an integer and manipulates the
-	//*** number.
-	//*** NOTE: a string of integers can be formed by creating a string
-	//*** with one of the numbers and then concatenating the other integers
-	//*** to form the string.
-	class retrieveNumbers implements ActionListener{
-		public void actionPerformed(ActionListener e) {
-			doSomething();
+	/*
+	 * This will allow us find The Y value. IF the Y value 
+	 * is equals to Zero it will print it out. If The Y is 
+	 * less than zero the program will assign that lower bound. 
+	 * if Y is greater than Zero that will be assign to the Upper
+	 * bound.
+	 */
+	private double findingY(double guess_X) {
+		this.guessX = guess_X; 
+		double Y = 1 ;
+		Y = this.guessX*((double) Math.pow(leadingCoefficient, 2)) + guessX*(this.coefficient4) + this.constant;
+		System.out.println("Y is equals to " + Y); 
+		if(Y< 0 ) {
+			lowerBound = guessX; 
+		}
+		else {
+			upperBound =guessX; 
+			
 		
-			int coefficient1 = Integer.parseInt(inputTextField1.getText());
-			int coefficient2 = Integer.parseInt(inputTextField2.getText());
-			int coefficient3 = Integer.parseInt(inputTextField3.getText());
-			int coefficient4 = Integer.parseInt(inputTextField4.getText());
-			int coefficient5 = Integer.parseInt(inputTextField5.getText());
-			int coefficient6 = Integer.parseInt(inputTextField6.getText());
 		}
+
+		return Y; 
 	}
-	 
-	class add5Button implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			System.out.println(" in add5Button class");
-			doSomething();//*** other methods can be called
-			int number = Integer.parseInt(inputTextField.getText());
-			number = number + 5;
-			String stringNumber = "" + number;
-			answerLabel.setText(stringNumber);//*** answerLabel gets a new value
-			inputTextField.setText(stringNumber);
-		}
+	/*public double OriginalFormula() {
+		double answer_Y = 0; 
+		double xValue = scaleCalculation() ;
+		
+		//Come back and check this out; 
+		
+		answer_Y =  xValue * ((double) Math.pow(leadingCoefficient, 2)) + xValue *(this.coefficient4) + this.constant; 
+		System.out.println("The answer Y is equals too" + answer_Y);
+		return answer_Y; 
 	}
-	class subtract5Button implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			System.out.println(" in subtract5Botton class");
-			int number = Integer.parseInt(inputTextField.getText());
-			number = number - 5;
-			String stringNumber = "" + number;
-			answerLabel.setText(stringNumber);
-			inputTextField.setText(stringNumber);
+	public double scaleCalculation() {
+			
+			upperBound = lowerXScale; //Previews X Value 
+			System.out.println("upperBound is equals to " + upperBound);
+				lowerXScale = lowerXScale + 1; 
+			lowerBound = lowerXScale; // New X value
+			System.out.println("Lower bound is equals to " + lowerBound);
+			/*
+			 * Getting the average of the two 
+			 * to get a new X value. 
+			 */
+			
+			/*
+			 * With the new X Value(guessX) we will take 
+			 * it and put it to the Original Polynomial; 
+			 			guessX = (lowerBound + upperBound)/2;
+		
+		System.out.println("Guess X is Equals to " + guessX);
+		return guessX; 
 		}
+		*/
+	public void calculation() {
+		
+		for(int i = 0; i <= 5; i++) {
+			guessX = walkingTheXScale(lowerXScale); 
+			System.out.println("LowerXScale in calculation " + lowerXScale);
+			//guessX = average(lowerBound, upperBound);
+			//System.out.println("GuessX is " + guessX);
+			
+			Yanswer = findingY(guessX); 
+			if(Yanswer == 0) {
+				System.out.println("Root " + Yanswer);
+			}
+			else {
+				
+			}
+			
+		}
+		
 	}
 	
-	//*** this method resets the values of inputTextField and answerLable
-	 
-	class nextNumberButton implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			inputTextField.setText("");//*** erases the values of this JTextField
-			answerLabel.setText("");//*** erases the value of this JLabel
-		}
-	}
-	public static void main(String[] args) throws IOException
-	  {
-		ExampleGUI gameGUI = new ExampleGUI();
-		System.out.println("we can print to the console");
-	    gameGUI.display();
 
-	  }
+	
 }
