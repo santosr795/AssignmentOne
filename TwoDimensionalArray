@@ -1,0 +1,65 @@
+public class MazeLoopExample
+{
+    private static int[][] mouseArray;
+    private static int [][] movingMouse; 
+    private static int [][] catPosition;
+    static int rowSize = 9;
+    static int columnSize = 9;
+    public static void main(String[] args)
+    {
+        mouseArray = new int[rowSize][columnSize];
+        fillArray();
+        printArray();
+        mouseMoving();
+        
+    }
+    private static void printArray()
+    {
+        int value;
+        for(int row = 0; row < rowSize; row++)
+        {
+            for(int col = 0; col < columnSize; col++)
+            {
+                value = mouseArray[row][col]; 
+                if(value > 9)
+                    System.out.print(" " + value);
+                
+                else
+                    System.out.print("  " + value );
+            }
+            System.out.println();
+        }
+    }
+    private static void fillArray()
+    {
+        int number = 0;
+        for(int row = 0; row < rowSize; row++)
+        {
+            for(int column = 0; column < columnSize; column++)
+            {
+                number++;
+                mouseArray[row][column]= number;
+            }
+        }
+    }
+    public static void mouseMoving(){
+    	int moveHorizontal = 0; 
+        	int moveVertical = 0; 
+        	int number = 0; 
+    	for(int j = 0; j < 8; j++) {
+    		int i = (int) Math.random();     	
+    		movingMouse[moveVertical][moveHorizontal] = number; 
+    		if((i%2) == 0) {
+    			moveHorizontal = moveHorizontal + 10; 
+    			number = number + 10; 
+    		}
+    		else {
+    			moveVertical = moveVertical + 1; 
+    			number = number + 1; 
+    		}
+    		
+    		System.out.println("Mouse move" + movingMouse[moveVertical][moveHorizontal]);
+    	}
+     	
+    }
+}
