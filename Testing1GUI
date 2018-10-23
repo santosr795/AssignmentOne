@@ -34,14 +34,14 @@ public class ExampleGUI extends JPanel
 	JPanel answerPanel = new JPanel();
 	JPanel nextNumberPanel = new JPanel();
         
-        JPanel inputNumberPanel1 = new JPanel();
+    JPanel inputNumberPanel1 = new JPanel();
 	JPanel inputNumberPanel2 = new JPanel(); 
 	JPanel inputNumberPanel3 = new JPanel(); 
 	JPanel inputNumberPanel4 = new JPanel(); 
 	JPanel inputNumberPanel5 = new JPanel(); 
 	JPanel inputNumberPanel6 = new JPanel(); 
-        JPanel resetPanel = new JPanel(); 
-        JPanel calculatePanel = new JPanel(); 
+    JPanel resetPanel = new JPanel(); 
+    JPanel calculatePanel = new JPanel(); 
 	
 	//*** a JLabel is a text string that is given a String value
 	//*** and is placed in its corresponding JPanel or JButton
@@ -53,18 +53,15 @@ public class ExampleGUI extends JPanel
 	JLabel answerLabel = new JLabel();
 	//JLabel nextNumberLabel = new JLabel();
         
-     
 	JLabel inputNumberLabel1 = new JLabel(); 
 	JLabel inputNumberLabel2 = new JLabel(); 
 	JLabel inputNumberLabel3 = new JLabel();
 	JLabel inputNumberLabel4 = new JLabel(); 
 	JLabel inputNumberLabel5 = new JLabel(); 
 	JLabel inputNumberLabel6 = new JLabel();
-        JLabel resetLabel = new JLabel();
+    JLabel resetLabel = new JLabel();
 	JLabel calculateLabel = new JLabel();
         
-        
-	
 	JTextField inputTextField1 = new JTextField(10);
 	JTextField inputTextField2 = new JTextField(10); 
 	JTextField inputTextField3 = new JTextField(10); 
@@ -75,7 +72,7 @@ public class ExampleGUI extends JPanel
 	//*** its corresponding actionPerformed() method from the class created
 	//*** for each button. This method executes the method code, performing
 	//*** what the button is to do.
-        JButton calculateButton = new JButton(); 
+    JButton calculateButton = new JButton(); 
 	JButton ResetButton = new JButton(); 
         
 	JButton add5Button = new JButton();
@@ -102,7 +99,7 @@ public class ExampleGUI extends JPanel
 
                 
                 
-                inputNumberPanel1.setLayout(new FlowLayout(FlowLayout.CENTER)); 
+        inputNumberPanel1.setLayout(new FlowLayout(FlowLayout.CENTER)); 
 		inputNumberPanel2.setLayout(new FlowLayout(FlowLayout.CENTER)); 
 		inputNumberPanel3.setLayout(new FlowLayout(FlowLayout.CENTER));
 		inputNumberPanel4.setLayout(new FlowLayout(FlowLayout.CENTER)); 
@@ -149,8 +146,7 @@ public class ExampleGUI extends JPanel
 		add5Button.setText("   Add 5   ");
 		subtract5Button.setText("Subtract 5");
 		answerLabel.setText("");
-		nextNumberButton.setText("   New Number   ");
-                
+		nextNumberButton.setText("   Reset   ");               
                 
                 
         titleLabel.setText("Finding the Roots of a Polynomial");
@@ -162,20 +158,10 @@ public class ExampleGUI extends JPanel
 		inputNumberLabel5.setText("     x^1    ");
 		inputNumberLabel6.setText("Number  "    );
 		calculateButton.setText("Calculate");
-		ResetButton.setText("Reset");
-                
-                
-                
-                
-                
-               // titlePanel.add(titleLabel);
-		//questionPanel.add(questionLabel);
-		
-         
-		
-		
-		
-		 
+		ResetButton.setText("Reset");                           
+                              
+        // titlePanel.add(titleLabel);
+		//questionPanel.add(questionLabel);				 
 		//*** the 3 buttons are connected to their classes
 		add5Button.addActionListener(new add5Button());
 		subtract5Button.addActionListener(new subtract5Button());
@@ -216,26 +202,20 @@ public class ExampleGUI extends JPanel
 		//*** Throughout the declarations and initializations variables were
 		//*** kept in this order to aid in keeping them straight
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-                add(titlePanel);
-		add(questionPanel);
+         add(titlePanel);
+         add(questionPanel);
          add(inputNumberPanel1);
          add(inputNumberPanel2);
          add(inputNumberPanel3); 
          add(inputNumberPanel4);
          add(inputNumberPanel5);
          add(inputNumberPanel6);
-                
-                
-              
-		add(inputNumberPanel);
-		add(addAndSubtractButtonPanel);
-		add(answerPanel);
-		add(nextNumberPanel);
+                 
+		 add(inputNumberPanel);
+		 add(addAndSubtractButtonPanel);
+		 add(answerPanel);
+		 add(nextNumberPanel);
                   ;
-                
-                
-                
-		
 		 //*** The method writeToFile() is called from the constructor.
 		 //*** One could call a read method from the constructor.
 		
@@ -292,13 +272,29 @@ public class ExampleGUI extends JPanel
 	}
 
 	
-	//*** This class has one method that is called when the add5Button
+	abstract //*** This class has one method that is called when the add5Button
 	//*** is pushed.  It retrieves the string from the JTextField
 	//*** inputTextField, converts it to an integer and manipulates the
 	//*** number.
 	//*** NOTE: a string of integers can be formed by creating a string
 	//*** with one of the numbers and then concatenating the other integers
 	//*** to form the string.
+	class retrieveNumbers implements ActionListener{
+		public void actionPerformed(ActionListener e) {
+			doSomething();
+		
+			int coefficient1 = Integer.parseInt(inputTextField1.getText());
+			int coefficient2 = Integer.parseInt(inputTextField2.getText());
+			int coefficient3 = Integer.parseInt(inputTextField3.getText());
+			int coefficient4 = Integer.parseInt(inputTextField4.getText());
+			int coefficient5 = Integer.parseInt(inputTextField5.getText());
+			int coefficient6 = Integer.parseInt(inputTextField6.getText());
+			//findingRoots roots = new findingRoots(); 
+			FindingTheRoots Roots = new FindingTheRoots(coefficient1, coefficient2, coefficient3, coefficient4, coefficient5, coefficient6);
+			answerLabel.setText( Roots.calculate());
+			 
+		}
+	}
 	 
 	class add5Button implements ActionListener
 	{
