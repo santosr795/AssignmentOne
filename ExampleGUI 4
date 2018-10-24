@@ -19,7 +19,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Scanner; 	
 
 public class ExampleGUI extends JPanel
 {
@@ -32,6 +32,10 @@ public class ExampleGUI extends JPanel
 	JPanel inputNumberPanel = new JPanel();
 	JPanel addAndSubtractButtonPanel = new JPanel();
 	JPanel answerPanel = new JPanel();
+	JPanel answerPanel2 = new JPanel(); 
+	JPanel answerPanel3 = new JPanel();
+	JPanel answerPanel4 = new JPanel();
+	JPanel answerPanel5 = new JPanel();
 	JPanel nextNumberPanel = new JPanel();
         
     JPanel inputNumberPanel1 = new JPanel();
@@ -52,7 +56,11 @@ public class ExampleGUI extends JPanel
 	JLabel add5Label = new JLabel();
 	JLabel subtract5Label = new JLabel();
 	JLabel answerLabel = new JLabel();
-	JLabel nextNumberLabel = new JLabel();
+	JLabel answerLabel2 = new JLabel(); 
+	JLabel answerLabel3 = new JLabel(); 
+	JLabel answerLabel4 = new JLabel(); 
+	JLabel answerLabel5 = new JLabel(); 
+	//JLabel nextNumberLabel = new JLabel();
         
 	JLabel inputNumberLabel1 = new JLabel(); 
 	JLabel inputNumberLabel2 = new JLabel(); 
@@ -96,6 +104,10 @@ public class ExampleGUI extends JPanel
 		inputNumberPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		addAndSubtractButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		answerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		answerPanel2.setLayout(new FlowLayout(FlowLayout.CENTER));
+		answerPanel3.setLayout(new FlowLayout(FlowLayout.CENTER));
+		answerPanel4.setLayout(new FlowLayout(FlowLayout.CENTER));
+		answerPanel5.setLayout(new FlowLayout(FlowLayout.CENTER));
 		nextNumberPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
                 
@@ -131,6 +143,10 @@ public class ExampleGUI extends JPanel
 		inputNumberLabel6.setFont(quizMidFont);
 		calculateLabel.setFont(quizMidFont);
 		answerLabel.setFont(quizSmallFont);
+		answerLabel2.setFont(quizSmallFont);
+		answerLabel3.setFont(quizSmallFont);
+		answerLabel4.setFont(quizSmallFont);
+		answerLabel5.setFont(quizSmallFont);
 		resetLabel.setFont(quizSmallFont);
 		inputTextField1.setFont(quizMidFont); 
 		inputTextField2.setFont(quizMidFont);
@@ -145,8 +161,12 @@ public class ExampleGUI extends JPanel
 		questionLabel.setText("Please enter an integer number.");
 		inputNumberLabel.setText("Number:");
 		add5Button.setText("   Add 5   ");
-		subtract5Button.setText("Subtract 5");
+		subtract5Button.setText("Calculate");
 		answerLabel.setText("");
+		answerLabel2.setText("");
+		answerLabel3.setText("");
+		answerLabel4.setText("");
+		answerLabel5.setText("");
 		nextNumberButton.setText("   Reset   ");               
                 
                 
@@ -164,17 +184,17 @@ public class ExampleGUI extends JPanel
         // titlePanel.add(titleLabel);
 		//questionPanel.add(questionLabel);				 
 		//*** the 3 buttons are connected to their classes
-		add5Button.addActionListener(new ActionListener());
-		subtract5Button.addActionListener(new ActionListener());
-		nextNumberButton.addActionListener(new ActionListener());
-		calculateButton.addActionListener(new ActionListener()); 
+		//add5Button.addActionListener(new add5Button());
+		subtract5Button.addActionListener(new subtract5Button());
+		nextNumberButton.addActionListener(new nextNumberButton());
+		//calculateButton.addActionListener(new calculateButton()); 
 		//*** Labels, buttons and textFields are added to their
 		//*** panels
 		titlePanel.add(titleLabel);
 		questionPanel.add(questionLabel);
 		//*** inputNumberPanel has 2 items added
-		inputNumberPanel.add(inputNumberLabel);
-		inputNumberPanel.add(inputTextField);
+		//inputNumberPanel.add(inputNumberLabel);
+		//inputNumberPanel.add(inputTextField);
 		
 		inputNumberPanel1.add(inputNumberLabel1); 
 		inputNumberPanel1.add(inputTextField1); 
@@ -196,11 +216,15 @@ public class ExampleGUI extends JPanel
         
                 
 		//*** submitPanel has two items added
-		addAndSubtractButtonPanel.add(add5Button);
+		//addAndSubtractButtonPanel.add(add5Button);
 		addAndSubtractButtonPanel.add(subtract5Button);
 		answerPanel.add(answerLabel);
+		answerPanel2.add(answerLabel2);
+		answerPanel3.add(answerLabel3);
+		answerPanel4.add(answerLabel4);
+		answerPanel5.add(answerLabel5);
 		nextNumberPanel.add(nextNumberButton);
-		calculatePanel.add(calculateButton); 
+		//calculatePanel.add(calculateButton); 
 		//*** The panels are added in the order that they should appear.
 		//*** Throughout the declarations and initializations variables were
 		//*** kept in this order to aid in keeping them straight
@@ -215,9 +239,13 @@ public class ExampleGUI extends JPanel
          add(inputNumberPanel6);
          add(calculatePanel);  
          
-		 add(inputNumberPanel);
+		// add(inputNumberPanel);
 		 add(addAndSubtractButtonPanel);
 		 add(answerPanel);
+		 add(answerPanel2);
+		 add(answerPanel3);
+		 add(answerPanel4);
+		 add(answerPanel5);
 		 add(nextNumberPanel);
                   ;
 		 //*** The method writeToFile() is called from the constructor.
@@ -283,10 +311,44 @@ public class ExampleGUI extends JPanel
 	//*** NOTE: a string of integers can be formed by creating a string
 	//*** with one of the numbers and then concatenating the other integers
 	//*** to form the string.
-	 /*class calculateButton implements ActionListener{
+	/*class calculateButton implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			doSomething();
 		
+			int coefficient1 = Integer.parseInt(inputTextField1.getText());
+			int coefficient2 = Integer.parseInt(inputTextField2.getText());
+			int coefficient3 = Integer.parseInt(inputTextField3.getText());
+			int coefficient4 = Integer.parseInt(inputTextField4.getText());
+			int coefficient5 = Integer.parseInt(inputTextField5.getText());
+			int coefficient6 = Integer.parseInt(inputTextField6.getText());
+			//findingRoots roots = new findingRoots(); 
+			FindingTheRoots Roots = new FindingTheRoots(coefficient1, coefficient2, coefficient3, coefficient4, coefficient5, coefficient6);
+			//answerLabel.setText( Roots.calculate());
+			 
+		}
+
+		
+	}
+	 
+	class add5Button implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println(" in add5Button class");
+			doSomething();//*** other methods can be called
+			int number = Integer.parseInt(inputTextField.getText());
+			number = number + 5;
+			String stringNumber = "" + number;
+			answerLabel.setText(stringNumber);//*** answerLabel gets a new value
+			inputTextField.setText(stringNumber);
+		}
+	}*/
+	class subtract5Button implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("Subtract Button"); 
+			doSomething();
 			double coefficient1 = Double.parseDouble(inputTextField1.getText());
 			double coefficient2 = Double.parseDouble(inputTextField2.getText());
 			double coefficient3 = Double.parseDouble(inputTextField3.getText());
@@ -297,48 +359,53 @@ public class ExampleGUI extends JPanel
 			//FindingTheRoots Roots = new FindingTheRoots(coefficient1, coefficient2, coefficient3, coefficient4, coefficient5, coefficient6);
 			//answerLabel.setText( Roots.calculate());
 			double xScale = -5;
-			
+			String StringRootOne = "";
+				String StringRootTwo = ""; 
+				String StringRootThree = ""; 
+				String StringRootFour = "" ; 
+				String StringRootFive = "";
+				int i = 0; 
 			while(xScale < 5) {
-			
+				
+				
 				double Yanswer = coefficient1*((double) Math.pow(xScale, 5)) + coefficient2*((double) Math.pow(xScale, 4)) +
 						coefficient3*((double) Math.pow(xScale, 3)) + coefficient4*((double) Math.pow(xScale,2)) + coefficient5*(xScale) + coefficient6; 
+				System.out.println("X is equals" + xScale);
 				System.out.println("YAnswer " + Yanswer);
 				
-				if(Yanswer == 0) {
-					String stringNumber = "" + Yanswer;
-					answerLabel.setText(stringNumber);
-					inputTextField.setText(stringNumber);
-				}
+				
+					
+					if(i == 0 && Yanswer == 0) {
+						 StringRootOne = "" + xScale; 
+						i = i + 1;
+					}
+					else if (i == 1 && Yanswer == 0) {
+						 StringRootTwo = "" + xScale; 
+						i = i + 1;
+						
+					}
+					else if(i == 2 && Yanswer == 0) {
+						StringRootThree = "" + xScale; 
+						i =i + 1; 
+					}
+					else if (i == 3 && Yanswer == 0) {
+						StringRootFour = "" + xScale;
+						i = i + 1;
+					}
+					else if (i == 4 && Yanswer == 0) {
+					StringRootFive = "" + xScale;
+					
+					
+					
+					}
+					//inputTextField.setText(stringNumber);
 				xScale = xScale + .5; 
-		}
-
-		
-	}
-	 */
-	class add5Button implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			
-			System.out.println(" in add5Button class");
-			doSomething();//*** other methods can be called
-			int number = Integer.parseInt(inputTextField.getText());
-			number = number + 5;
-			String stringNumber = "" + number;
-			answerLabel.setText(stringNumber);//*** answerLabel gets a new value
-			inputTextField.setText(stringNumber);
-		}
-	}
-	class subtract5Button implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			System.out.println(" in subtract5Botton class");
-			int number = Integer.parseInt(inputTextField.getText());
-			number = number - 5;
-			String stringNumber = "" + number;
-			answerLabel.setText(stringNumber);
-			inputTextField.setText(stringNumber);
+}
+			answerLabel.setText(StringRootOne);
+			answerLabel2.setText(StringRootTwo);
+			answerLabel3.setText(StringRootThree);
+			answerLabel4.setText(StringRootFour);
+			answerLabel5.setText(StringRootFive);
 		}
 	}
 	
@@ -356,14 +423,13 @@ public class ExampleGUI extends JPanel
 			inputTextField5.setText("");
 			inputTextField6.setText("");
 			answerLabel.setText("");//*** erases the value of this JLabel
-
 		}
 	}
-	public static void main(String[] arg)
+	public static void main(String[] args) throws IOException
 	  {
 		ExampleGUI gameGUI = new ExampleGUI();
 		System.out.println("we can print to the console");
 	    gameGUI.display();
 
 	  }
-	}
+}
