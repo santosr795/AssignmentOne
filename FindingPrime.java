@@ -8,10 +8,21 @@ public class PrimeNumbers {
 		System.out.println("Enter a number that you to find out if it is a prime Number.");
 		double input  = keyboard.nextDouble(); 
 		double resultSqrt = Math.sqrt(input);
+		int factorIndex = 0; 
 		System.out.println("Result SquareRoot is equals to " + resultSqrt);
 		for(double index = 5; index <= resultSqrt; index = index + 2) {
-			double answer = resultSqrt/ index; 
+			double answer = input/ index; 
 			System.out.println("answer is equals to " + answer);
+			//This line will check if dividing input by index will have a reminder
+			// equals to zero. if it does that means is a factor
+			if(input%index == 0 )
+				//In here resultSquare will change by resultS square rooting Answer; 
+				
+				for(factorIndex < 1; factorIndex++) {
+					//In here you will create the ArrayList 
+					// 
+				}
+			}
 		if(resultSqrt % 2 == 0) {
 			
 		}
