@@ -20,14 +20,84 @@ public class MouseMaze {
 		keyboard.close();
 		//keyboard.close();
 		//int m = (int)Math.random() * 28;
-		 //System.out.println(m);
-		
+		 //System.out.println(m); 
+		int r=0;
+		do {
 		 mouseArray = new int [arrayRows][arrayColumns];
-		 fillArray(arrayRows, arrayColumns);
-		catLocation(arrayRows, arrayColumns); 
-		 fillArray(arrayRows, arrayColumns);
-		 mouseMovent(); 
+		 fillArray(arrayRows, arrayColumns);for(int rowsValue = 0; rowsValue < arrayRows; rowsValue++) {
+				for(int columnsValue = 0;  columnsValue < arrayColumns; columnsValue++) {
+					if(catRow == rowsValue && catColumn == columnsValue) {
+						 mouseArray [rowsValue][columnsValue] = 1; 
+					}
+					else if(catRow == rowsValue && catColumnTwo == columnsValue) {
+						 mouseArray [rowsValue][columnsValue] = 1; 
+					}
+					else if(catRowTwo == rowsValue && catColumn == columnsValue) {
+						 mouseArray [rowsValue][columnsValue] = 1; 
+					}
+					else if(catRowTwo  == rowsValue && catColumnTwo == columnsValue) {
+						 mouseArray [rowsValue][columnsValue] = 1; 
+					}
+					else {
+					 mouseArray [rowsValue][columnsValue] = 0; 
+					//mouseArray
+					}
+				}
+				System.out.println(" ");
+			}
+		//catLocation(arrayRows, arrayColumns); 
+		//catLocation(arrayRows, arrayColumns); 
+		 //fillArray(arrayRows, arrayColumns);
+		 catLocation(arrayRows, arrayColumns); 
+		 //fillArray(arrayRows, arrayColumns);
+	int mouseRowsMovement = 0, mouseColumnsMovent = 0,nextMoveInt = 3;
+	double nextMove ;
+	for(int i = 0; i < arrayRows ; i++) { 
+		int possibleCat = mouseArray[mouseRowsMovement][mouseColumnsMovent];
+		 System.out.println(mouseRowsMovement);
+		 System.out.println(mouseColumnsMovent);
+		mouseArray [mouseRowsMovement][mouseColumnsMovent] = i ;
 		
+		
+		 switch(nextMoveInt) {
+		 case 1://right up
+			 mouseRowsMovement = mouseRowsMovement +1;
+			 mouseColumnsMovent = mouseColumnsMovent -1; 
+			 break;
+		 case 2://right
+			 //mouseRowsMovement = mouseRowsMovement;
+			 mouseColumnsMovent = mouseColumnsMovent +1; 
+			 break;
+		 case 3: //right down
+			 mouseRowsMovement = mouseRowsMovement +1;
+			 mouseColumnsMovent = mouseColumnsMovent +1; 
+			 break;
+		 case 4://down
+			 mouseRowsMovement = mouseRowsMovement +1;
+			// mouseColumnsMovent = mouseColumnsMovent +1; 
+			 break;
+		 case 5://left down
+			 mouseRowsMovement = mouseRowsMovement -1;
+			 mouseColumnsMovent = mouseColumnsMovent +1; 
+			 break;
+		 case 6://left
+			// mouseRowsMovement = mouseRowsMovement +1;
+			 mouseColumnsMovent = mouseColumnsMovent -1; 
+			 break;
+		 case 7://left up
+			 mouseRowsMovement = mouseRowsMovement -1;
+			 mouseColumnsMovent = mouseColumnsMovent -1; 
+			 break;
+		 case 8://up
+			 mouseRowsMovement = mouseRowsMovement -1;
+			 //mouseColumnsMovent = mouseColumnsMovent -1; 
+			 break;
+			
+			}
+		 nextMove = Math.random()*8;
+		 nextMoveInt = (int)nextMove +1; 
+			}
+		}while(r < 5);
 		 printMouseArray(arrayRows, arrayColumns);
 		
 	}
@@ -47,7 +117,7 @@ public class MouseMaze {
 			catLocation(arrayRows, arrayColumns); 
 			 fillArray(arrayRows, arrayColumns);
 		int mouseRowsMovement = 0, mouseColumnsMovent = 0;
-		for(int i = 0; i < arrayRows; i++) {
+		for(int i = 0; i < arrayRows + 1; i++) {
 			int possibleCat = mouseArray[mouseRowsMovement][mouseColumnsMovent];
 			 mouseArray [mouseRowsMovement][mouseColumnsMovent] = i ; 
 			;
