@@ -47,7 +47,7 @@ public class MouseMaze {
 			catLocation(arrayRows, arrayColumns); 
 			 fillArray(arrayRows, arrayColumns);
 		int mouseRowsMovement = 0, mouseColumnsMovent = 0;
-		for(int i = 0; i < arrayRows + 1; i++) {
+		for(int i = 0; i < arrayRows; i++) {
 			int possibleCat = mouseArray[mouseRowsMovement][mouseColumnsMovent];
 			 mouseArray [mouseRowsMovement][mouseColumnsMovent] = i ; 
 			;
