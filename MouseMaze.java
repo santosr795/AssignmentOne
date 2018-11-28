@@ -22,6 +22,8 @@ public class MouseMaze {
 		//int m = (int)Math.random() * 28;
 		 //System.out.println(m); 
 		int r=0;
+		int caught =0, fellOff = 0, attempts =0,illegalMove = 0; 
+		boolean IT_HAS_GOTTEN_TO_THE_END = true; 
 		do {
 		 mouseArray = new int [arrayRows][arrayColumns];
 		 fillArray(arrayRows, arrayColumns);for(int rowsValue = 0; rowsValue < arrayRows; rowsValue++) {
@@ -50,54 +52,179 @@ public class MouseMaze {
 		 //fillArray(arrayRows, arrayColumns);
 		 catLocation(arrayRows, arrayColumns); 
 		 //fillArray(arrayRows, arrayColumns);
-	int mouseRowsMovement = 0, mouseColumnsMovent = 0,nextMoveInt = 3;
+	int mouseRowsMovement = 0, mouseColumnsMovement = 0,nextMoveInt = 3;
 	double nextMove ;
-	for(int i = 0; i < arrayRows ; i++) { 
-		int possibleCat = mouseArray[mouseRowsMovement][mouseColumnsMovent];
-		 System.out.println(mouseRowsMovement);
-		 System.out.println(mouseColumnsMovent);
-		mouseArray [mouseRowsMovement][mouseColumnsMovent] = i ;
+	for(int i = 1; i < 20 ; i++) { 
+		int possibleCat = mouseArray[mouseRowsMovement][mouseColumnsMovement];
+		// System.out.println(mouseRowsMovement);
+		 //System.out.println(mouseColumnsMovement);
+		if(possibleCat ==1) {
+			 mouseRowsMovement = 0;
+			 mouseColumnsMovement = 0;
+			i=21;
+			caught++;
+		}
+		else if(possibleCat >  1) {
+			 mouseRowsMovement = 0;
+			 mouseColumnsMovement = 0;
+			 i=21;
+			illegalMove++;
+		}
+		else if(mouseRowsMovement ==arrayRows || mouseColumnsMovement ==arrayColumns) {
+			IT_HAS_GOTTEN_TO_THE_END = false;
+			System.out.println("It has made to the end ");
+			printMouseArray(arrayRows,arrayColumns);
+			
+		}
+		
+		mouseArray [mouseRowsMovement][mouseColumnsMovement] = i ;
 		
 		
 		 switch(nextMoveInt) {
 		 case 1://right up
+			 //It need to check if its inside the bound and if not illegal move 
+			 //It also needs to check if it touches the cat
 			 mouseRowsMovement = mouseRowsMovement +1;
-			 mouseColumnsMovent = mouseColumnsMovent -1; 
+			 mouseColumnsMovement = mouseColumnsMovement -1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 2://right
 			 //mouseRowsMovement = mouseRowsMovement;
-			 mouseColumnsMovent = mouseColumnsMovent +1; 
+			 mouseColumnsMovement = mouseColumnsMovement +1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 3: //right down
 			 mouseRowsMovement = mouseRowsMovement +1;
-			 mouseColumnsMovent = mouseColumnsMovent +1; 
+			 mouseColumnsMovement = mouseColumnsMovement +1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+				 			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 4://down
 			 mouseRowsMovement = mouseRowsMovement +1;
 			// mouseColumnsMovent = mouseColumnsMovent +1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 5://left down
 			 mouseRowsMovement = mouseRowsMovement -1;
-			 mouseColumnsMovent = mouseColumnsMovent +1; 
+			 mouseColumnsMovement = mouseColumnsMovement +1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 6://left
 			// mouseRowsMovement = mouseRowsMovement +1;
-			 mouseColumnsMovent = mouseColumnsMovent -1; 
+			 mouseColumnsMovement = mouseColumnsMovement -1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 7://left up
 			 mouseRowsMovement = mouseRowsMovement -1;
-			 mouseColumnsMovent = mouseColumnsMovent -1; 
+			 mouseColumnsMovement = mouseColumnsMovement -1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 		 case 8://up
 			 mouseRowsMovement = mouseRowsMovement -1;
 			 //mouseColumnsMovent = mouseColumnsMovent -1; 
+			 if(mouseRowsMovement >= arrayRows || mouseRowsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;				 
+			 }
+			 else if(mouseColumnsMovement >= arrayRows || mouseColumnsMovement < 0) {
+				 mouseRowsMovement = 0;
+				 mouseColumnsMovement = 0;
+				 i =21;
+				 fellOff++;
+			 }
 			 break;
 			
 			}
+		
 		 nextMove = Math.random()*8;
 		 nextMoveInt = (int)nextMove +1; 
-			}
-		}while(r < 5);
+		 r++;
+			} 
+		//printMouseArray(arrayRows, arrayColumns);
+		// System.out.println("");
+		attempts++;
+		}while(IT_HAS_GOTTEN_TO_THE_END = true);
+		System.out.println("It took the Mouse " +attempts+" to find the end." );
+		System.out.println("the mouse was caught by the cat " + caught + " times.");
+		System.out.println("The mouse fell off the maze " + fellOff+ " times.");
 		 printMouseArray(arrayRows, arrayColumns);
 		
 	}
@@ -165,13 +292,13 @@ public class MouseMaze {
 	}
 
 	public static void catLocation(int rows, int columns) {
-		System.out.println(rows + " " + columns);
+		//System.out.println(rows + " " + columns);
 		//Random rand = new Random(); 
 		// int columnTwo= 0, rowTwo = 0;
 		double randomRow = Math.random() * rows  ;
-		System.out.println(randomRow);
+	//	System.out.println(randomRow);
 		 double randomColumn = Math.random() * columns ;
-			System.out.println(randomColumn);
+			//System.out.println(randomColumn);
 
 		 catRow = (int)randomRow;
 		 catColumn = (int)randomColumn;
@@ -205,7 +332,7 @@ public class MouseMaze {
 			catColumnTwo = catColumn - 1; 
 		}
 		
-		System.out.println("Column One " + catColumn+"\nColumn Two " + catColumnTwo + "\nRow One " + catRow + "\nRow Two" + catRowTwo);
+		//System.out.println("Column One " + catColumn+"\nColumn Two " + catColumnTwo + "\nRow One " + catRow + "\nRow Two" + catRowTwo);
 	}
 	public static void fillArray(int numberOfRows, int numberOfColumns) {
 		
